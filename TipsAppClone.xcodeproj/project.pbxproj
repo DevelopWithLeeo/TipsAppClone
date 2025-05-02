@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		265CA47A2DC4BFFB004D17C0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 265CA4792DC4BFF2004D17C0 /* .gitignore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		265CA4562DC4BD37004D17C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		265CA4442DC4BD35004D17C0 /* TipsAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipsAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		265CA4552DC4BD37004D17C0 /* TipsAppCloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsAppCloneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		265CA45F2DC4BD37004D17C0 /* TipsAppCloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsAppCloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		265CA4792DC4BFF2004D17C0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +80,7 @@
 		265CA43B2DC4BD35004D17C0 = {
 			isa = PBXGroup;
 			children = (
+				265CA4792DC4BFF2004D17C0 /* .gitignore */,
 				265CA4462DC4BD35004D17C0 /* TipsAppClone */,
 				265CA4582DC4BD37004D17C0 /* TipsAppCloneTests */,
 				265CA4622DC4BD37004D17C0 /* TipsAppCloneUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265CA47A2DC4BFFB004D17C0 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
