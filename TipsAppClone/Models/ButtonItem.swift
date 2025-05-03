@@ -5,4 +5,9 @@
 //  Created by Choi Jung In on 5/3/25.
 //
 
-import Foundation
+import SwiftUI
+
+struct ButtonItem {
+    var text: String
+    var buttonStyle: ButtonStyle
+}
