@@ -12,8 +12,8 @@ struct MainItem: Identifiable {
     let id: UUID
     var title: String
     var subtitle: String
-    var icon: String          // SF Symbol 이름 혹은 이미지 이름
-    var color: Color          // SwiftUI의 Color 사용
+    var icon: String
+    var color: Color
     var detailItemList: [DetailItem]
     var isCountable: Bool
     var isWebView: Bool
