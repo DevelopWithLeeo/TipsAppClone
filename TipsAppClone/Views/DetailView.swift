@@ -1,5 +1,5 @@
 //
-//  ImageView.swift
+//  DetailView.swift
 //  TipsAppClone
 //
 //  Created by Choi Jung In on 5/2/25.
