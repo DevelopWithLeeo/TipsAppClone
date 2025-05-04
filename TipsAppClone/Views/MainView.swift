@@ -35,7 +35,12 @@ struct MainView: View {
                                 } else {
                                     NavigationLink(destination: SubView()) {
                                         HStack {
-                                            Label(item.title, systemImage: item.icon)
+                                            Label {
+                                                Text(item.title)
+                                            } icon: {
+                                                Image(systemName: item.icon)
+                                                    .foregroundStyle(item.color)
+                                            }
                                             if item.isCountable {
                                                 Spacer()
                                                 Text("2")
