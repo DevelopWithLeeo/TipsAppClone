@@ -9,5 +9,5 @@ import SwiftUI
 
 struct ButtonItem {
     var text: String
-    var buttonStyle: ButtonStyle
+    var buttonStyle: any ButtonStyle
 }
