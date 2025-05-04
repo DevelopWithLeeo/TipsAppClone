@@ -16,7 +16,7 @@ struct MainView: View {
     @State private var searchText: String = ""
     //이거 이해가 잘 안됨,,,
     let groupedItems = Dictionary(grouping: MainItem.defaultItem, by: { $0.section })
-    let sortedSections = ["시작하기", "더 찾아보기", "사용자의 기기", "사용 설명서"]
+    let sortedSections = ["시작하기", "새로운 기능", "더 찾아보기", "사용자의 기기", "사용 설명서"]
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -34,7 +34,14 @@ struct MainView: View {
                                     Label(item.title, systemImage: item.icon)
                                 } else {
                                     NavigationLink(destination: SubView()) {
-                                        Label(item.title, systemImage: item.icon)
+                                        HStack {
+                                            Label(item.title, systemImage: item.icon)
+                                            if item.isCountable {
+                                                Spacer()
+                                                Text("2")
+                                                    .foregroundColor(.gray)
+                                            }
+                                        }
                                     }
                                 }
                             }
