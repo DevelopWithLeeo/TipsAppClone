@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SidebarView: View {
     
-    @State var text: String = ""
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationView {
@@ -19,7 +19,7 @@ struct SidebarView: View {
             }
         .navigationTitle("Tips")
         }
-        .searchable(text: $text)
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
     }
 }
 
