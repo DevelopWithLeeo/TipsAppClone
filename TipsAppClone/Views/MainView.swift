@@ -22,6 +22,20 @@ struct MainView: View {
         NavigationStack(path: $path) {
             VStack {
                 List {
+                    // > 제거 필요
+                    NavigationLink {
+                        SubView()
+                    } label: {
+                        Image("mainview_ios18")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 240)
+                            .clipped()
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+                    
+                    
                     ForEach(sortedSections, id: \.self) { section in
                         Section(header: Text(section)
                             .font(.title3)
@@ -33,7 +47,9 @@ struct MainView: View {
                                 if item.isWebView {
                                     Label(item.title, systemImage: item.icon)
                                 } else {
-                                    NavigationLink(destination: SubView()) {
+                                    NavigationLink {
+                                        SubView()
+                                    } label: {
                                         HStack {
                                             Label {
                                                 Text(item.title)
@@ -59,7 +75,8 @@ struct MainView: View {
         }
         .searchable(
             text: $searchText,
-            placement: .navigationBarDrawer(displayMode: .always)
+            placement: .navigationBarDrawer(displayMode: .always),
+            prompt: "검색"
         )
     }
 }
