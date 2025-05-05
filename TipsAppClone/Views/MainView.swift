@@ -24,7 +24,7 @@ struct MainView: View {
                 List {
                     // > 제거 필요
                     NavigationLink {
-                        SubView()
+                        SubView(index: 0)
                     } label: {
                         Image("mainview_ios18")
                             .resizable()
@@ -48,7 +48,9 @@ struct MainView: View {
                                     Label(item.title, systemImage: item.icon)
                                 } else {
                                     NavigationLink {
-                                        SubView()
+                                        if let index = Constants.Strings.titles.firstIndex(of: item.title) {
+                                            SubView(index: index)
+                                        }
                                     } label: {
                                         HStack {
                                             Label {
