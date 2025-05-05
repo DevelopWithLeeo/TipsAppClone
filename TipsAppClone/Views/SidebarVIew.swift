@@ -9,13 +9,14 @@ import SwiftUI
 
 
 struct SidebarView: View {
+    @Binding var selectedMainItem: MainItem.ID?
     
     @State private var searchText: String = ""
     
     var body: some View {
         NavigationView {
-            List(mainItems) {
-                ListRow(text: $0.title, icon: $0.icon)
+            List(mainItems, selection: $selectedMainItem) {
+                ListRow(text: $0.title, icon: Image(systemName: $0.icon))
             }
         .navigationTitle("Tips")
         }
@@ -39,6 +40,6 @@ struct ListRow: View {
 }
 
 
-#Preview {
-    SidebarView()
-}
+//#Preview {
+//    SidebarView()
+//}

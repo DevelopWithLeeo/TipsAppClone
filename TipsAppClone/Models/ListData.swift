@@ -44,31 +44,31 @@ struct Constants {
     
     struct Icons {
         static let icons = [
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence"),
-            Image(systemName: "apple.intelligence")
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
+            "apple.intelligence",
         ]
     }
     
     struct Images {
         static let images = [
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
-            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"],
+            ["Image_1", "Image_1", "Image_1", "Image_1"]
             
         ]
     
@@ -86,16 +86,16 @@ struct Constants {
     
     struct Gradients {
         static let gradients = [
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
-            LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
+            [Color(.blue), Color(.green)],
         ]
     }
 }

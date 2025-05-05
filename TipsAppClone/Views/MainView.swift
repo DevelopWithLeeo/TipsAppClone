@@ -9,12 +9,15 @@ import SwiftUI
 
 struct MainView: View {
     
+    @State private var selectedMainItem: MainItem.ID?
+    @State private var selectedDetailItem: DetailItem.ID?
+    
     var body: some View {
         
         NavigationSplitView {
-            SidebarView()
+            SidebarView(selectedMainItem: $selectedMainItem)
         } content: {
-            ContentView()
+            ContentView(selectedMainItem: $selectedMainItem ,selectedDetailItem: $selectedDetailItem)
         } detail: {
             DetailView()
         }
