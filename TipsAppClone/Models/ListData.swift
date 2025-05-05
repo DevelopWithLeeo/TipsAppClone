@@ -15,7 +15,7 @@ struct Constants {
         
         static let titles = ["Setup checklist", "Navigate your iPhone", "Practice key gestures", "What's new in iOS 18", "Apple Intelligence", "Celebrate Earth Day", "Personalize your iPhone", "Genius Picks", "Keep in touch", "AirPods"]
         
-        static let subTitle = ["Start here to set up your iPhone.", "Discover gesture to navigate your iPhone with ease.", "Learn how to drag, zoom, select text, and more.", "Discover new ways to customize your iPhone, stay connected, and relive your favorite moments.", "Use Apple's built-in personal intelligence to help enhance your writing, create unique images, and more.", "Enjoy nature and learn about planet-friendly actions you can take with iPhone.", "Learn how to get creative with your Lock Screen, sounds, and settings.", "Discover hidden gems from our experts.", "Discover ways to use Messages and FaceTime to stay connected.", "Learn how to use your AirPods toplay music, get ambient background sounds, and more."]
+        static let subtitles = ["Start here to set up your iPhone.", "Discover gesture to navigate your iPhone with ease.", "Learn how to drag, zoom, select text, and more.", "Discover new ways to customize your iPhone, stay connected, and relive your favorite moments.", "Use Apple's built-in personal intelligence to help enhance your writing, create unique images, and more.", "Enjoy nature and learn about planet-friendly actions you can take with iPhone.", "Learn how to get creative with your Lock Screen, sounds, and settings.", "Discover hidden gems from our experts.", "Discover ways to use Messages and FaceTime to stay connected.", "Learn how to use your AirPods toplay music, get ambient background sounds, and more."]
         
         static let detailTitles = [
             ["detail_title_1","detail_title_2","detail_title_3","detail_title_4",],["detail_title_1","detail_title_2","detail_title_3","detail_title_4",],["detail_title_1","detail_title_2","detail_title_3","detail_title_4",],["detail_title_1","detail_title_2","detail_title_3","detail_title_4",],["detail_title_1","detail_title_2","detail_title_3","detail_title_4",],
@@ -57,6 +57,22 @@ struct Constants {
         ]
     }
     
+    struct Images {
+        static let images = [
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            [Image("Image_1"),Image("Image_1"),Image("Image_1"),Image("Image_1")],
+            
+        ]
+    
+    }
     struct SetUpChecklistIcons {
         static let icons = [
             Image(systemName: "faceid"),
@@ -82,6 +98,21 @@ struct Constants {
             LinearGradient(colors: [.blue, .green], startPoint: .topTrailing, endPoint: .bottomLeading),
         ]
     }
-    
-    
 }
+
+
+
+
+let mainItems: [MainItem] = Constants.Strings.titles.enumerated().map {
+    index, title in
+    MainItem(title: title, subtitle: Constants.Strings.subtitles[index], icon: Constants.Icons.icons[index], gradient: Constants.Gradients.gradients[index], detailItemList: detailItems[index], isWebView: false)
+}
+
+let detailItems: [[DetailItem]] = Constants.Strings.detailTitles.enumerated().map { index, detailTitleList in
+    detailTitleList.enumerated().map { i, detailTitle in
+        DetailItem(detailTitle: detailTitle, content: Constants.Strings.contents[index][i], image: Constants.Images.images[index][i])
+    }
+}
+
+
+
