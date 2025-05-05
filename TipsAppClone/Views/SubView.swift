@@ -8,11 +8,80 @@
 import SwiftUI
 
 struct SubView: View {
+    let index: Int
     var body: some View {
-        Text("SubView")
+        NavigationStack {
+            VStack {
+                List {
+                    VStack {
+                        Constants.Icons.icons[index]
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60, height: 60)
+                            .foregroundStyle(.white)
+                            
+
+                        Text(Constants.Strings.titles[index])
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+
+                        Text(Constants.Strings.subtitles[index])
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .frame(height: 180)
+                    .listRowBackground(
+                        Constants.Gradients.gradients[index]
+                            .mask(
+                                LinearGradient(
+                                    gradient: Gradient(stops: [
+                                        .init(color: .black, location: 0),
+                                        .init(color: .black.opacity(0), location: 1)
+                                    ]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                    )
+                    
+                    Section {
+                        ForEach(0..<Constants.Strings.detailTitles[index].count, id: \.self) { i in
+                            NavigationLink {
+                                DetailView()
+                            } label: {
+                                HStack {
+                                    Constants.Images.images[index][i]
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 60)
+                                        .padding(.vertical, 3)
+                                        .padding(.horizontal, 15)
+                                        .background(Color(UIColor.systemGray5))
+                                        .cornerRadius(12)
+                                    VStack(alignment: .leading) {
+                                        Text(Constants.Strings.detailTitles[index][i])
+                                            .font(.system(size: 18, weight: .bold))
+                                        Text(Constants.Strings.contents[index][i])
+                                            .font(.system(size: 12))
+                                            .foregroundStyle(.gray)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .listSectionSeparator(.hidden, edges: [.top, .bottom])
+                }
+                .listStyle(.inset)
+            }
+        }
     }
 }
 
 #Preview {
-    SubView()
+    SubView(index: 0)
 }
