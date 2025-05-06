@@ -45,7 +45,12 @@ struct MainView: View {
                         ) {
                             ForEach(groupedItems[section] ?? []) { item in
                                 if item.isWebView {
-                                    Label(item.title, systemImage: item.icon)
+                                    Label {
+                                        Text(item.title)
+                                    } icon: {
+                                        Image(systemName: item.icon)
+                                            .foregroundStyle(item.color)
+                                    }
                                 } else {
                                     NavigationLink {
                                         if let index = Constants.Strings.titles.firstIndex(of: item.title) {
