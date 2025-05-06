@@ -17,10 +17,20 @@ struct ContentView: View {
             
             VStack {
                 
-                Color.gray
-                    .frame(maxWidth:.infinity, minHeight: 300)
+                GeometryReader {geo in
                     
-                
+                    let offset = geo.frame(in: .global).minY
+                    
+                    LinearGradient(
+                        colors: [.blue, .green],
+                        startPoint: .bottomLeading,
+                        endPoint: .topTrailing
+                    )
+                    .frame(height: offset > 0 ? 300 + offset : 300)
+                    .offset(y: offset > 0 ? -offset : 0)
+                }
+                .frame(height: 300)
+        
                 ContentListView(
                     selectedMainItem: $selectedMainItem,
                     selectedDetailItem: $selectedDetailItem
