@@ -44,31 +44,32 @@ struct Constants {
     
     struct Icons {
         static let icons = [
+            "checkmark.rectangle.stack",
+            "apps.iphone",
+            "hand.draw",
             "apple.intelligence",
             "apple.intelligence",
-            "apple.intelligence",
-            "apple.intelligence",
-            "apple.intelligence",
-            "apple.intelligence",
-            "apple.intelligence",
-            "apple.intelligence",
-            "apple.intelligence",
-            "apple.intelligence",
+            "globe.americas",
+            "heart",
+            "atom",
+            "message",
+            "airpods",
         ]
     }
     
     struct Images {
         static let images = [
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"],
-            ["Image_1", "Image_1", "Image_1", "Image_1"]
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4", "Image_5"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+            ["Image_1", "Image_2", "Image_3", "Image_4"],
+
             
         ]
     
@@ -86,16 +87,16 @@ struct Constants {
     
     struct Gradients {
         static let gradients = [
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
-            [Color(.blue), Color(.green)],
+            [Color(.green), Color(.yellow)],
+            [Color(.blue), Color(.mint)],
+            [Color(.indigo), Color(.blue)],
+            [Color(.blue), Color(.cyan)],
+            [Color(.red), Color(.orange)],
+            [Color(.green), Color(.mint)],
+            [Color(.purple), Color(.pink)],
+            [Color(.indigo), Color(.cyan)],
+            [Color(.green), Color(.yellow)],
+            [Color(.indigo), Color(.blue)],
         ]
     }
 }

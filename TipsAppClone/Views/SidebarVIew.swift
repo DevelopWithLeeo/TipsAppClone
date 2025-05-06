@@ -19,7 +19,7 @@ struct SidebarView: View {
                 if isFirstMainItem(item: $0) {
                     SectionImage()
                 }
-                ListRow(text: $0.title, icon: Image(systemName: $0.icon))
+                ListRow(text: $0.title, icon: $0.icon, gradient: $0.gradient)
             }
         .navigationTitle("Tips")
         }
@@ -40,7 +40,7 @@ struct SectionImage: View {
     var body: some View {
         Section {
             Color.gray
-                .frame(height: 200)
+                .frame(height: ViewConstants.sectionImageHeight)
                 .listRowInsets(EdgeInsets())
         }
         
@@ -49,20 +49,34 @@ struct SectionImage: View {
 
 struct ListRow: View {
     let text: String
-    let icon: Image
+    let icon: String
+    let gradient: [Color]
     let count: Int = 0
     
     var body: some View {
         HStack {
-            icon
+            ZStack {
+                Color.clear
+                    .frame(
+                        width: ViewConstants.smallIconWidth,
+                        height: ViewConstants.smallIconWidth
+                    )
+                Image(systemName: icon)
+                    .font(.title2)
+                    .foregroundStyle(
+                        LinearGradient(
+                        colors: gradient,
+                        startPoint: .bottomLeading,
+                        endPoint: .topTrailing
+                        )
+                    )
+            }
+            .padding(.leading, -8)
             Text(text)
             Spacer()
             Image(systemName: "chevron.forward")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
         }
     }
 }
-
-
-//#Preview {
-//    SidebarView()
-//}

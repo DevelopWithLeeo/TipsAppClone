@@ -81,7 +81,7 @@ struct IconAndTitleView: View {
         VStack {
             Image(systemName: mainItem.icon)
                 .resizable()
-                .frame(width: ViewConstants.iconWidth)
+                .frame(width: ViewConstants.largeIconWidth)
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.white)
             Text(mainItem.title)
