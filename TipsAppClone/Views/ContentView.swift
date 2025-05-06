@@ -20,14 +20,24 @@ struct ContentView: View {
                 GeometryReader {geo in
                     
                     let offset = geo.frame(in: .global).minY
-                    
-                    LinearGradient(
-                        colors: [.blue, .green],
-                        startPoint: .bottomLeading,
-                        endPoint: .topTrailing
-                    )
-                    .frame(height: offset > 0 ? 300 + offset : 300)
-                    .offset(y: offset > 0 ? -offset : 0)
+                    ZStack(alignment: .bottom) {
+                        LinearGradient(
+                            colors: [.blue, .green],
+                            startPoint: .bottomLeading,
+                            endPoint: .topTrailing
+                        )
+                        .frame(height: offset > 0 ? 300 + offset : 300)
+                        .offset(y: offset > 0 ? -offset : 0)
+                        
+                        LinearGradient(
+                            colors: [.white, .white.opacity(0)],
+                            startPoint: .bottom,
+                            endPoint: .top
+                        )
+                        .mask {
+                            LinearGradient(colors: [.black, .clear], startPoint: .bottom, endPoint: .top)
+                        }
+                    }
                 }
                 .frame(height: 300)
         
@@ -36,10 +46,12 @@ struct ContentView: View {
                     selectedDetailItem: $selectedDetailItem
                 )
             }
+            
         }
         .ignoresSafeArea()
 
     }
+    
 }
 
 struct ContentListView: View {
