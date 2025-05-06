@@ -57,17 +57,15 @@ struct LinearGradientView: View {
 
 struct MaskingGradientView: View {
     var body: some View {
-        LinearGradient(
+        CustomGradientView(
             colors: [.white, .white.opacity(0)],
-            startPoint: .bottom,
-            endPoint: .top
+            isVertical: true
         )
         .frame(height: ViewConstants.gradientHeight)
         .mask {
-            LinearGradient(
+            CustomGradientView(
                 colors: [.black, .clear],
-                startPoint: .bottom,
-                endPoint: .top
+                isVertical: true
             )
         }
     }

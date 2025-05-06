@@ -10,7 +10,7 @@ import SwiftUI
 enum ViewConstants {
     static let smallImageHeight: CGFloat = 104
     static let smallImageWidth: CGFloat = 80
-    static let sectionImageHeight: CGFloat = 224
+    static let sectionImageHeight: CGFloat = 240
     
     
     static let headerHeight: CGFloat = 232

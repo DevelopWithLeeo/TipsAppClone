@@ -39,8 +39,10 @@ func isFirstMainItem(item: MainItem) -> Bool {
 struct SectionImage: View {
     var body: some View {
         Section {
-            Color.gray
+            Image("sectionImage")
+                .resizable()
                 .frame(height: ViewConstants.sectionImageHeight)
+                .aspectRatio(contentMode: .fit)
                 .listRowInsets(EdgeInsets())
         }
         
@@ -61,14 +63,17 @@ struct ListRow: View {
                         width: ViewConstants.smallIconWidth,
                         height: ViewConstants.smallIconWidth
                     )
+                
                 Image(systemName: icon)
                     .font(.title2)
                     .foregroundStyle(
+                        
                         LinearGradient(
-                        colors: gradient,
-                        startPoint: .bottomLeading,
-                        endPoint: .topTrailing
+                            colors: gradient,
+                            startPoint: .bottomLeading,
+                            endPoint: .topTrailing
                         )
+//                        CustomGradientView(colors: gradient)
                     )
             }
             .padding(.leading, -8)
