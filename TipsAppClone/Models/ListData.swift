@@ -55,6 +55,18 @@ struct Constants {
             "message",
             "airpods",
         ]
+        static let filledIcons = [
+            "checkmark.rectangle.stack.fill",
+            "apps.iphone",
+            "hand.draw.fill",
+            "apple.intelligence",
+            "apple.intelligence",
+            "globe.americas.fill",
+            "heart.fill",
+            "atom",
+            "message.fill",
+            "airpods",
+        ]
     }
     
     struct Images {
@@ -106,7 +118,7 @@ struct Constants {
 
 let mainItems: [MainItem] = Constants.Strings.titles.enumerated().map {
     index, title in
-    MainItem(title: title, subtitle: Constants.Strings.subtitles[index], sectionName: Constants.Strings.sectionNames[index], icon: Constants.Icons.icons[index], gradient: Constants.Gradients.gradients[index], detailItemList: detailItems[index], isWebView: false)
+    MainItem(title: title, subtitle: Constants.Strings.subtitles[index], sectionName: Constants.Strings.sectionNames[index], icon: Constants.Icons.icons[index], filledIcon: Constants.Icons.filledIcons[index], gradient: Constants.Gradients.gradients[index], detailItemList: detailItems[index], isWebView: false)
 }
 
 let detailItems: [[DetailItem]] = Constants.Strings.detailTitles.enumerated().map { index, detailTitleList in

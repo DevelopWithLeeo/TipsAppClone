@@ -23,7 +23,7 @@ struct SidebarView: View {
                 }
                 
                 ForEach(sectionTitles, id: \.self) {section in
-                    Section(header: TitleText(text: section)) {
+                    Section(header: TitleSmallText(text: section)) {
                         ForEach(mainItems.filter {$0.sectionName == section }) {
                             item in
                             ListRow(text: item.title, icon: item.icon, gradient: item.gradient)

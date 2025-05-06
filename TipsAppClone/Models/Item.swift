@@ -15,6 +15,7 @@ struct MainItem: Identifiable, Hashable {
     let subtitle: String
     let sectionName: String
     let icon: String
+    let filledIcon: String
     let gradient: [Color]
     let detailItemList: [DetailItem]
     let isWebView: Bool

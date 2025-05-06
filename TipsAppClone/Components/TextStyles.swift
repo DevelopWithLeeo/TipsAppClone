@@ -8,7 +8,20 @@
 
 import SwiftUI
 
+
 struct TitleText: View {
+    let text: String
+
+    var body: some View {
+        Text(text)
+            .textCase(nil)
+            .font(.title.bold())
+            .padding(.bottom, 4)
+    }
+}
+
+
+struct TitleSmallText: View {
     let text: String
 
     var body: some View {
@@ -26,6 +39,17 @@ struct SubtitleText: View {
     var body: some View {
         Text(text)
             .font(.subheadline)
+            .foregroundColor(.secondary)
+    }
+}
+
+
+struct CalloutText: View {
+    let text: String
+
+    var body: some View {
+        Text(text)
+            .font(.callout)
             .foregroundColor(.secondary)
     }
 }

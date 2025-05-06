@@ -8,8 +8,8 @@
 import SwiftUI
 
 enum ViewConstants {
-    static let smallImageHeight: CGFloat = 104
-    static let smallImageWidth: CGFloat = 80
+    static let smallImageHeight: CGFloat = 80
+    static let smallImageWidth: CGFloat = 60
     static let sectionImageHeight: CGFloat = 240
     
     
@@ -22,6 +22,6 @@ enum ViewConstants {
     static let middlePadding: CGFloat = 8
     static let largePadding: CGFloat = 16
     
-    static let largeIconWidth:CGFloat = 80
+    static let largeIconWidth:CGFloat = 72
     static let smallIconWidth:CGFloat = 32
 }

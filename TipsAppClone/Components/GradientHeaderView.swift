@@ -77,19 +77,21 @@ struct IconAndTitleView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: mainItem.icon)
-                .resizable()
-                .frame(width: ViewConstants.largeIconWidth)
-                .aspectRatio(contentMode: .fit)
+            ZStack {
+                Image(systemName: mainItem.filledIcon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.white)
+            }
+            .frame(
+                height: ViewConstants.largeIconWidth
+            )
+            
+            TitleText(text: mainItem.title)
                 .foregroundStyle(.white)
-            Text(mainItem.title)
-                .font(.title.bold())
-                .padding(.bottom, ViewConstants.smallPadding)
-                .foregroundStyle(.white)
-            Text(mainItem.subtitle)
-                .font(.body)
+            
+            CalloutText(text: mainItem.subtitle)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(.secondary)
             Spacer()
         }
         .padding()

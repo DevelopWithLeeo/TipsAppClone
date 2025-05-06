@@ -48,19 +48,17 @@ struct ContentItemView: View {
     
     var body: some View {
             HStack {
-                //            Image("Image_1")
-                //                .resizable()
-                //                .aspectRatio(contentMode: .fit)
-                //                .frame(width: 60)
-                //                .padding()
-                Color.blue
+                Image(image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: ViewConstants.smallImageWidth, height: ViewConstants.smallImageHeight)
+                    .padding()
                 
                 VStack(alignment: .leading) {
                     Text(detailTitle)
                         .font(.headline)
                     Text(content)
-                        .font(.subheadline)
+                        .font(.footnote)
                         .foregroundStyle(.secondary)
                         .lineLimit(3)
                 }
