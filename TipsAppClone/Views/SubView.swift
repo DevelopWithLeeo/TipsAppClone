@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SubView: View {
     let index: Int
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -19,22 +20,20 @@ struct SubView: View {
                             .scaledToFit()
                             .frame(width: 60, height: 60)
                             .foregroundStyle(.white)
-                            
-
+                        
                         Text(Constants.Strings.titles[index])
                             .font(.title)
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
-
-                        Text(Constants.Strings.subtitles[index])
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                                .padding(.horizontal)
                         
+                        Text(Constants.Strings.subtitles[index])
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.center)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .frame(height: 180)
+                    .listSectionSeparator(.hidden, edges: [.top, .bottom])
                     .listRowBackground(
                         Constants.Gradients.gradients[index]
                             .mask(
@@ -48,11 +47,13 @@ struct SubView: View {
                                 )
                             )
                     )
+//                    .ignoresSafeArea(.top)
+                    //탭바 투명으로?
                     
                     Section {
                         ForEach(0..<Constants.Strings.detailTitles[index].count, id: \.self) { i in
                             NavigationLink {
-                                DetailView()
+                                DetailView(mainIndex: index, subIndex: i)
                             } label: {
                                 HStack {
                                     Constants.Images.images[index][i]
@@ -69,6 +70,7 @@ struct SubView: View {
                                         Text(Constants.Strings.contents[index][i])
                                             .font(.system(size: 12))
                                             .foregroundStyle(.gray)
+                                            .lineLimit(3)
                                     }
                                 }
                             }
@@ -83,5 +85,5 @@ struct SubView: View {
 }
 
 #Preview {
-    SubView(index: 0)
+    SubView(index: 1)
 }
