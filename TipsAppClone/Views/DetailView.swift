@@ -14,27 +14,73 @@ struct DetailView: View {
     @Binding var selectedDetailItem: DetailItem.ID?
     
     var body: some View {
-    
-        if let mainItem = mainItems.first(where: {$0.id == selectedMainItem}) {
-            TabView(selection: $selectedDetailItem) {
-                ForEach(mainItem.detailItemList) {detailItem in
-                    DetailItemView(imageName: detailItem.image)
-                        .tag(detailItem.id)
+        
+        NavigationView {
+            
+            if let mainItem = mainItems.first(where: {$0.id == selectedMainItem}) {
+                TabView(selection: $selectedDetailItem) {
+                    ForEach(mainItem.detailItemList) {detailItem in
+                        DetailItemView(detail: detailItem)
+                            .tag(detailItem.id)
+                    }
                 }
+                .ignoresSafeArea()
+                .tabViewStyle(.page)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack(alignment:.bottom) {
+                            Group {
+                                Image(systemName: "square.and.arrow.up")
+                                Spacer()
+                                    .frame(width: ViewConstants.largePadding)
+                                Image(systemName: "bookmark")
+                            }.foregroundStyle(Color.blue)
+                        }
+                    }
+                }
+                .navigationTitle(mainItem.title)
+                .navigationBarTitleDisplayMode(.inline)
+                
+                
+            } else {
+                Text("Select an item")
+                    .foregroundStyle(.secondary)
+                
             }
-            .tabViewStyle(.page)
-        } else {
-            Text("Select an item")
-                .foregroundStyle(.secondary)
+
         }
+
     }
 }
 
 
 struct DetailItemView: View {
-    let imageName: String
+    let detail: DetailItem
     var body: some View {
-        Image(imageName)
+        VStack {
+            Spacer()
+                .frame(height: 64)
+            
+            Image(detail.image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 520)
+
+            VStack(alignment: .leading) {
+                Text(detail.detailTitle)
+                    .font(.title3.bold())
+                    .padding(.bottom, ViewConstants.middlePadding)
+                Text(detail.content)
+                    .font(.body)
+            }
+            .padding()
+            .padding(.horizontal)
+            
+            Spacer()
+            
+            
+            
+        }
     }
 }
 
