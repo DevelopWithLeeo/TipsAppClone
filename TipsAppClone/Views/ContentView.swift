@@ -14,6 +14,7 @@ struct ContentView: View {
     
     
     var body: some View {
+        // mainItem을 detail뷰로 넘겨줘야함
         if let mainItem = mainItems.first(where: { $0.id == selectedMainItem}) {
             List(mainItem.detailItemList, selection: $selectedDetailItem) {
                 detail in ContentItemView(detailTitle: detail.detailTitle, content: detail.content, image: detail.image)
@@ -34,7 +35,8 @@ struct ContentItemView: View {
         HStack {
             Image("Image_1")
                 .resizable()
-                .frame(width: 80, height: 100)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 60)
                 .padding()
             
             VStack(alignment: .leading) {

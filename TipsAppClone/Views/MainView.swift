@@ -19,7 +19,8 @@ struct MainView: View {
         } content: {
             ContentView(selectedMainItem: $selectedMainItem ,selectedDetailItem: $selectedDetailItem)
         } detail: {
-            DetailView()
+//            DetailView()
+            DetailView(selectedMainItem: $selectedMainItem, selectedDetailItem: $selectedDetailItem)
         }
     }
 }

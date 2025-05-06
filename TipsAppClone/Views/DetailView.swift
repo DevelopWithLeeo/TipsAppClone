@@ -9,7 +9,31 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    @Binding var selectedMainItem: MainItem.ID?
+    @Binding var selectedDetailItem: DetailItem.ID?
+    
     var body: some View {
-        Text("Detail View")
+    
+        if let mainItem = mainItems.first(where: {$0.id == selectedMainItem}) {
+            TabView(selection: $selectedDetailItem) {
+                ForEach(mainItem.detailItemList) {detailItem in
+                    DetailItemView(imageName: detailItem.image)
+                }
+            }
+            .tabViewStyle(.page)
+        }
     }
 }
+
+
+struct DetailItemView: View {
+    let imageName: String
+    var body: some View {
+        Image(imageName)
+    }
+}
+
+//#Preview {
+//    DetailView()
+//}
