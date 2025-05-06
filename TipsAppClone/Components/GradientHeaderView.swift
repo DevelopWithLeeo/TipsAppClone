@@ -19,12 +19,17 @@ struct GradientHeader: View {
             let offset = geo.frame(in: .global).minY
             ZStack(alignment: .bottom) {
                 
-                LinearGradientView(
-                    gradient: mainItem.gradient,
-                    offset: offset,
-                    height: height
-                )
-                MaskingGradientView()
+                ZStack(alignment: .bottom) {
+                    LinearGradientView(
+                        gradient: mainItem.gradient,
+                        offset: offset,
+                        height: height
+                    )
+                    
+                    MaskingGradientView()
+                        .offset(y: offset > 0 ? -offset : 0)
+                }
+               
                 IconAndTitleView(mainItem: mainItem)
                 
             }
@@ -74,8 +79,6 @@ struct IconAndTitleView: View {
     
     var body: some View {
         VStack {
-            Spacer()
-                .frame(height: ViewConstants.headerPaddingTop)
             Image(systemName: mainItem.icon)
                 .resizable()
                 .frame(width: ViewConstants.iconWidth)

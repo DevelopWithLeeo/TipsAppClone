@@ -11,7 +11,7 @@ enum ViewConstants {
     static let smallImageHeight: CGFloat = 104
     static let smallImageWidth: CGFloat = 80
     
-    static let headerHeight: CGFloat = 320
+    static let headerHeight: CGFloat = 232
     static let gradientHeight: CGFloat = 160
     
     static let dividerPadding: CGFloat = 80
