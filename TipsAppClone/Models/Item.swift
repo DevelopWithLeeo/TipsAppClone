@@ -13,6 +13,7 @@ struct MainItem: Identifiable, Hashable {
     let id = UUID()
     let title: String
     let subtitle: String
+    let sectionName: String
     let icon: String
     let gradient: [Color]
     let detailItemList: [DetailItem]

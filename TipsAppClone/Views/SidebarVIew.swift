@@ -13,13 +13,25 @@ struct SidebarView: View {
     
     @State private var searchText: String = ""
     
+    let sectionTitles = Array(NSOrderedSet(array: mainItems.map {$0.sectionName})) as! [String]
+    
     var body: some View {
         NavigationView {
-            List(mainItems, selection: $selectedMainItem) {
-                if isFirstMainItem(item: $0) {
+            List(selection: $selectedMainItem) {
+                if isFirstMainItem(item: mainItems.first!) {
                     SectionImage()
                 }
-                ListRow(text: $0.title, icon: $0.icon, gradient: $0.gradient)
+                
+                ForEach(sectionTitles, id: \.self) {section in
+                    Section(header: TitleText(text: section)) {
+                        ForEach(mainItems.filter {$0.sectionName == section }) {
+                            item in
+                            ListRow(text: item.title, icon: item.icon, gradient: item.gradient)
+                        }
+                    }}
+                
+                
+//
             }
         .navigationTitle("Tips")
         }
