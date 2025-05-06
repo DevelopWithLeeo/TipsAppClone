@@ -16,11 +16,34 @@ struct SidebarView: View {
     var body: some View {
         NavigationView {
             List(mainItems, selection: $selectedMainItem) {
+                if isFirstMainItem(item: $0) {
+                    SectionImage()
+                }
                 ListRow(text: $0.title, icon: Image(systemName: $0.icon))
             }
         .navigationTitle("Tips")
         }
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .searchable(
+            text: $searchText,
+            placement: .navigationBarDrawer(displayMode: .always)
+        )
+    }
+}
+
+
+
+func isFirstMainItem(item: MainItem) -> Bool {
+    return item.id == mainItems.first?.id
+}
+
+struct SectionImage: View {
+    var body: some View {
+        Section {
+            Color.gray
+                .frame(height: 200)
+                .listRowInsets(EdgeInsets())
+        }
+        
     }
 }
 
