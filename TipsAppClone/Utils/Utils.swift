@@ -16,7 +16,7 @@ enum ViewConstants {
     
     static let dividerPadding: CGFloat = 80
     static let headerPaddingTop: CGFloat = 80
-    static let mainTitlePaddingBottom: CGFloat = 4
+    static let smallPadding: CGFloat = 4
     
     static let iconWidth:CGFloat = 80
 }

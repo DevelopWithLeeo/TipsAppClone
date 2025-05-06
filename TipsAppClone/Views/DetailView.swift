@@ -19,9 +19,13 @@ struct DetailView: View {
             TabView(selection: $selectedDetailItem) {
                 ForEach(mainItem.detailItemList) {detailItem in
                     DetailItemView(imageName: detailItem.image)
+                        .tag(detailItem.id)
                 }
             }
             .tabViewStyle(.page)
+        } else {
+            Text("Select an item")
+                .foregroundStyle(.secondary)
         }
     }
 }

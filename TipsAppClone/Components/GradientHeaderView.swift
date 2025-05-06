@@ -83,7 +83,7 @@ struct IconAndTitleView: View {
                 .foregroundStyle(.white)
             Text(mainItem.title)
                 .font(.title.bold())
-                .padding(.bottom, ViewConstants.mainTitlePaddingBottom)
+                .padding(.bottom, ViewConstants.smallPadding)
                 .foregroundStyle(.white)
             Text(mainItem.subtitle)
                 .font(.body)

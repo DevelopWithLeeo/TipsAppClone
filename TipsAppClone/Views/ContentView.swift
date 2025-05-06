@@ -1,5 +1,5 @@
 //
-//  SubView.swift
+//  ContentView.swift
 //  TipsAppClone
 //
 //  Created by Choi Jung In on 5/2/25.
@@ -12,68 +12,29 @@ struct ContentView: View {
     @Binding var selectedDetailItem: DetailItem.ID?
     
     var body: some View {
-
-        ScrollView {
+        
+        if let mainItem = mainItems.first(where: { isSelectedMainItem(mainItem: $0)}) {
             
-            VStack {
-                
-                if let mainItem = mainItems.first(where: { isSelectedMainItem(mainItem: $0)}) {
-                    
+            List(selection: $selectedDetailItem) {
+                Section {
                     GradientHeader(mainItem: mainItem)
-                    ContentListView(
-                        mainItem: mainItem,
-                        selectedDetailItem: $selectedDetailItem
-                    )
+                        .listRowInsets(EdgeInsets())
+                        .listRowSeparator(.hidden)
+                }
+                
+                ForEach(mainItem.detailItemList) {detail in
+                    NavigationLink(value: detail.id) {
+                        ContentItemView(
+                            detailTitle: detail.detailTitle,
+                            content: detail.content,
+                            image: detail.image)
+                    }
                 }
             }
-            
         }
-        .ignoresSafeArea()
-
     }
-    
     func isSelectedMainItem(mainItem: MainItem) -> Bool {
         return mainItem.id == selectedMainItem
-    }
-    
-}
-
-
-struct ContentListView: View {
-    
-    let mainItem: MainItem
-    @Binding var selectedDetailItem: DetailItem.ID?
-    
-    var body: some View {
-            LazyVStack(alignment: .leading) {
-                ForEach(mainItem.detailItemList) {detail in
-                    
-                    ContentItemViewWithDivider(mainItem: mainItem, detail: detail)
-
-                }
-            }
-    }
-}
-
-struct ContentItemViewWithDivider: View {
-    
-    let mainItem: MainItem
-    let detail: DetailItem
-    
-    var body: some View {
-        VStack {
-            ContentItemView(
-                detailTitle: detail.detailTitle,
-                content: detail.content,
-                image: detail.image
-            )
-            if !(detail.id == mainItem.detailItemList.last?.id) {
-                Divider()
-                    .padding(.horizontal)
-                    .padding(.leading, ViewConstants.dividerPadding)
-                
-            }
-        }
     }
 }
 
@@ -103,10 +64,7 @@ struct ContentItemView: View {
                         .foregroundStyle(.secondary)
                         .lineLimit(3)
                 }
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .foregroundStyle(.gray)
+                .padding(.horizontal, ViewConstants.smallPadding)
             }
-            .padding()
     }
 }
