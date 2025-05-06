@@ -11,13 +11,62 @@ struct ContentView: View {
     @Binding var selectedMainItem: MainItem.ID?
     @Binding var selectedDetailItem: DetailItem.ID?
     
+    var body: some View {
+
+        ScrollView {
+            
+            VStack {
+                
+                Color.gray
+                    .frame(maxWidth:.infinity, minHeight: 300)
+                    
+                
+                ContentListView(
+                    selectedMainItem: $selectedMainItem,
+                    selectedDetailItem: $selectedDetailItem
+                )
+            }
+        }
+        .ignoresSafeArea()
+
+    }
+}
+
+struct ContentListView: View {
     
+    @Binding var selectedMainItem: MainItem.ID?
+    @Binding var selectedDetailItem: DetailItem.ID?
     
     var body: some View {
-        // mainItem을 detail뷰로 넘겨줘야함
         if let mainItem = mainItems.first(where: { $0.id == selectedMainItem}) {
-            List(mainItem.detailItemList, selection: $selectedDetailItem) {
-                detail in ContentItemView(detailTitle: detail.detailTitle, content: detail.content, image: detail.image)
+            LazyVStack(alignment: .leading) {
+                ForEach(mainItem.detailItemList) {detail in
+                    
+                    ContentItemViewWithDivider(mainItem: mainItem, detail: detail)
+
+                }
+            }
+        }
+    }
+}
+
+struct ContentItemViewWithDivider: View {
+    
+    let mainItem: MainItem
+    let detail: DetailItem
+    
+    var body: some View {
+        VStack {
+            ContentItemView(
+                detailTitle: detail.detailTitle,
+                content: detail.content,
+                image: detail.image
+            )
+            if !(detail.id == mainItem.detailItemList.last?.id) {
+                Divider()
+                    .padding(.horizontal)
+                    .padding(.leading, 80)
+                
             }
         }
     }
@@ -32,23 +81,27 @@ struct ContentItemView: View {
     
     
     var body: some View {
-        HStack {
-            Image("Image_1")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 60)
-                .padding()
-            
-            VStack(alignment: .leading) {
-                Text(detailTitle)
-                    .font(.headline)
-                Text(content)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+            HStack {
+                //            Image("Image_1")
+                //                .resizable()
+                //                .aspectRatio(contentMode: .fit)
+                //                .frame(width: 60)
+                //                .padding()
+                Color.blue
+                    .frame(width: 80, height: 104)
+                
+                VStack(alignment: .leading) {
+                    Text(detailTitle)
+                        .font(.headline)
+                    Text(content)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(3)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundStyle(.gray)
             }
-            Spacer()
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.gray)
-        }
+            .padding()
     }
 }
