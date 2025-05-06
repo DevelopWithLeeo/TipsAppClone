@@ -17,34 +17,14 @@ struct ContentView: View {
             
             VStack {
                 
-                GeometryReader {geo in
+                if let mainItem = mainItems.first(where: { isSelectedMainItem(mainItem: $0)}) {
                     
-                    let offset = geo.frame(in: .global).minY
-                    ZStack(alignment: .bottom) {
-                        LinearGradient(
-                            colors: [.blue, .green],
-                            startPoint: .bottomLeading,
-                            endPoint: .topTrailing
-                        )
-                        .frame(height: offset > 0 ? 300 + offset : 300)
-                        .offset(y: offset > 0 ? -offset : 0)
-                        
-                        LinearGradient(
-                            colors: [.white, .white.opacity(0)],
-                            startPoint: .bottom,
-                            endPoint: .top
-                        )
-                        .mask {
-                            LinearGradient(colors: [.black, .clear], startPoint: .bottom, endPoint: .top)
-                        }
-                    }
+                    GradientHeader(mainItem: mainItem)
+                    ContentListView(
+                        mainItem: mainItem,
+                        selectedDetailItem: $selectedDetailItem
+                    )
                 }
-                .frame(height: 300)
-        
-                ContentListView(
-                    selectedMainItem: $selectedMainItem,
-                    selectedDetailItem: $selectedDetailItem
-                )
             }
             
         }
@@ -52,15 +32,19 @@ struct ContentView: View {
 
     }
     
+    func isSelectedMainItem(mainItem: MainItem) -> Bool {
+        return mainItem.id == selectedMainItem
+    }
+    
 }
+
 
 struct ContentListView: View {
     
-    @Binding var selectedMainItem: MainItem.ID?
+    let mainItem: MainItem
     @Binding var selectedDetailItem: DetailItem.ID?
     
     var body: some View {
-        if let mainItem = mainItems.first(where: { $0.id == selectedMainItem}) {
             LazyVStack(alignment: .leading) {
                 ForEach(mainItem.detailItemList) {detail in
                     
@@ -68,7 +52,6 @@ struct ContentListView: View {
 
                 }
             }
-        }
     }
 }
 
@@ -87,7 +70,7 @@ struct ContentItemViewWithDivider: View {
             if !(detail.id == mainItem.detailItemList.last?.id) {
                 Divider()
                     .padding(.horizontal)
-                    .padding(.leading, 80)
+                    .padding(.leading, ViewConstants.dividerPadding)
                 
             }
         }
@@ -110,7 +93,7 @@ struct ContentItemView: View {
                 //                .frame(width: 60)
                 //                .padding()
                 Color.blue
-                    .frame(width: 80, height: 104)
+                    .frame(width: ViewConstants.smallImageWidth, height: ViewConstants.smallImageHeight)
                 
                 VStack(alignment: .leading) {
                     Text(detailTitle)
