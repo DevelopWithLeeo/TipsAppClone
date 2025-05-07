@@ -77,13 +77,6 @@ struct DetailItemView: View {
             .padding(.horizontal)
             
             Spacer()
-            
-            
-            
         }
     }
 }
-
-//#Preview {
-//    DetailView()
-//}

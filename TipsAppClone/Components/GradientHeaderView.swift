@@ -15,7 +15,6 @@ struct GradientHeader: View {
     var body: some View {
         
         GeometryReader {geo in
-            
             let offset = geo.frame(in: .global).minY
             ZStack(alignment: .bottom) {
                 

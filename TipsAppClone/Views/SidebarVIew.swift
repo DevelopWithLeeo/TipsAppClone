@@ -28,10 +28,8 @@ struct SidebarView: View {
                             item in
                             ListRow(text: item.title, icon: item.icon, gradient: item.gradient)
                         }
-                    }}
-                
-                
-//
+                    }
+                }
             }
         .navigationTitle("Tips")
         }
@@ -57,7 +55,6 @@ struct SectionImage: View {
                 .aspectRatio(contentMode: .fit)
                 .listRowInsets(EdgeInsets())
         }
-        
     }
 }
 
