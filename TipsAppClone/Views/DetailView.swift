@@ -17,7 +17,8 @@ struct DetailView: View {
         
         NavigationView {
             
-            if let mainItem = mainItems.first(where: {$0.id == selectedMainItem}) {
+            if let mainItem =
+                mainItems.first(where: {$0.id == selectedMainItem}) {
                 TabView(selection: $selectedDetailItem) {
                     ForEach(mainItem.detailItemList) {detailItem in
                         DetailItemView(detail: detailItem)
@@ -27,16 +28,7 @@ struct DetailView: View {
                 .ignoresSafeArea()
                 .tabViewStyle(.page)
                 .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        HStack(alignment:.bottom) {
-                            Group {
-                                Image(systemName: "square.and.arrow.up")
-                                Spacer()
-                                    .frame(width: ViewConstants.largePadding)
-                                Image(systemName: "bookmark")
-                            }.foregroundStyle(Color.blue)
-                        }
-                    }
+                    ToolBarItemContent()
                 }
                 .navigationTitle(mainItem.title)
                 .navigationBarTitleDisplayMode(.inline)
@@ -77,6 +69,22 @@ struct DetailItemView: View {
             .padding(.horizontal)
             
             Spacer()
+        }
+    }
+}
+
+
+struct ToolBarItemContent: ToolbarContent {
+    var body: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            HStack(alignment:.bottom) {
+                Group {
+                    Image(systemName: "square.and.arrow.up")
+                    Spacer()
+                        .frame(width: ViewConstants.largePadding)
+                    Image(systemName: "bookmark")
+                }.foregroundStyle(Color.blue)
+            }
         }
     }
 }

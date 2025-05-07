@@ -9,8 +9,8 @@ import SwiftUI
 
 
 struct SidebarView: View {
-    @Binding var selectedMainItem: MainItem.ID?
     
+    @Binding var selectedMainItem: MainItem.ID?
     @State private var searchText: String = ""
     
     let sectionTitles = Array(NSOrderedSet(array: mainItems.map {$0.sectionName})) as! [String]
@@ -18,7 +18,8 @@ struct SidebarView: View {
     var body: some View {
         NavigationView {
             List(selection: $selectedMainItem) {
-                if isFirstMainItem(item: mainItems.first!) {
+                
+                Section {
                     SectionImage()
                 }
                 
@@ -26,7 +27,11 @@ struct SidebarView: View {
                     Section(header: TitleSmallText(text: section)) {
                         ForEach(mainItems.filter {$0.sectionName == section }) {
                             item in
-                            ListRow(text: item.title, icon: item.icon, gradient: item.gradient)
+                            ListRow(
+                                text: item.title,
+                                icon: item.icon,
+                                gradient: item.gradient
+                            )
                         }
                     }
                 }
@@ -41,10 +46,6 @@ struct SidebarView: View {
 }
 
 
-
-func isFirstMainItem(item: MainItem) -> Bool {
-    return item.id == mainItems.first?.id
-}
 
 struct SectionImage: View {
     var body: some View {
@@ -73,17 +74,7 @@ struct ListRow: View {
                         height: ViewConstants.smallIconWidth
                     )
                 
-                Image(systemName: icon)
-                    .font(.title2)
-                    .foregroundStyle(
-                        
-                        LinearGradient(
-                            colors: gradient,
-                            startPoint: .bottomLeading,
-                            endPoint: .topTrailing
-                        )
-//                        CustomGradientView(colors: gradient)
-                    )
+                GradientIcon(systemName: icon, gradient: gradient)
             }
             .padding(.leading, -8)
             Text(text)
@@ -94,3 +85,23 @@ struct ListRow: View {
         }
     }
 }
+
+struct GradientIcon: View {
+    
+    let systemName: String
+    let gradient: [Color]
+    
+    var body: some View {
+        Image(systemName: systemName)
+            .font(.title2)
+            .foregroundStyle(
+                LinearGradient(
+                    colors: gradient,
+                    startPoint: .bottomLeading,
+                    endPoint: .topTrailing
+                )
+            )
+    }
+}
+
+
