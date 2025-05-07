@@ -15,33 +15,34 @@ struct DetailView: View {
     
     var body: some View {
         
-        NavigationView {
-            
-            if let mainItem =
-                mainItems.first(where: {$0.id == selectedMainItem}) {
-                TabView(selection: $selectedDetailItem) {
-                    ForEach(mainItem.detailItemList) {detailItem in
-                        DetailItemView(detail: detailItem)
-                            .tag(detailItem.id)
-                    }
+        //  selectedDetailItem의 초기값이 올바르게 설정되었는지 확인
+        //  TabView가 나타날 때까지 selectedDetailItem이 nil이 아니도록 보장
+        
+        if let mainItem = mainItems.first(where: {$0.id == selectedMainItem}),
+           let validDetailItem = mainItem.detailItemList.first(where: {$0.id == selectedDetailItem})
+        {
+            TabView(selection: $selectedDetailItem) {
+                ForEach(mainItem.detailItemList) {detailItem in
+                    DetailItemView(detail: detailItem)
+                        .tag(detailItem.id)
                 }
-                .ignoresSafeArea()
-                .tabViewStyle(.page)
-                .toolbar {
-                    ToolBarItemContent()
-                }
-                .navigationTitle(mainItem.title)
-                .navigationBarTitleDisplayMode(.inline)
-                
-                
-            } else {
-                Text("Select an item")
-                    .foregroundStyle(.secondary)
-                
             }
-
+            .tabViewStyle(.page)
+            .ignoresSafeArea()
+            .navigationTitle(mainItem.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolBarItemContent()
+            }
+            
+            
+        } else {
+            Text("Select an item")
+                .foregroundStyle(.secondary)
+            
         }
-
+        
+        
     }
 }
 
@@ -57,7 +58,7 @@ struct DetailItemView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(height: 520)
-
+            
             VStack(alignment: .leading) {
                 Text(detail.detailTitle)
                     .font(.title3.bold())
